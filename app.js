@@ -1,1 +1,1 @@
-/home/makevoid/Sites/gaia_ghost/index.js
+index.js
