@@ -7,11 +7,11 @@
         {{! Everything inside the #post tags pulls data from the post }}
         <article class="{{post_class}}">
         {{#post}}
-            {{#contentFor "metaTags"}} 
+            {{#contentFor "metaTags"}}
                 <meta property="article:author" content="{{author.name}}">
             {{/contentFor}}
 
-            <div class="post__wrapper--subpage">    
+            <div class="post__wrapper--subpage">
                 <div class="post__media"></div>
 
                 <header class="post__header--subpage">
@@ -44,7 +44,7 @@
                             <span class="social__icon--hidden">Google+</span>
                         </a>
                     </div>
-                    
+
                     {{#if tags}}
                     <ul class="post__meta post__meta--subpage">
                       {{#foreach tags}}
@@ -55,7 +55,7 @@
                 </footer>
             </div>
 
-            <aside class="author">
+{{!--             <aside class="author">
                 {{#if author.image}}
                 <a href="{{author.website}}" class="author__avatar">
                     <img src="{{author.image}}" alt="{{author.name}}">
@@ -64,11 +64,11 @@
 
                 <h3 class="author__name">{{author.name}}</h3>
                 <p class="author__bio">{{author.bio}}</p>
-            </aside>
+            </aside> --}}
 
-            <div class="post__comments">
+            {{!-- <div class="post__comments">
                 <div id="disqus_thread"></div>
-            </div>
+            </div> --}}
         {{/post}}
         </article>
     </div>
