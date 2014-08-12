@@ -35,6 +35,14 @@ task :setup => :environment do
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 end
 
+
+task :symlink => :environment do
+    queue 'rm -rf content/images'
+    queue 'rm -rf content/data'
+    queue  "ln -s #{deploy_to}/shared/data   content/data"
+    queue  "ln -s #{deploy_to}/shared/images content/images"
+end
+
 desc "Deploys the current version to the server."
 task :deploy => :environment do
   deploy do
@@ -42,6 +50,7 @@ task :deploy => :environment do
     # instance of your project.
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
+    invoke :symlink
     # invoke :'bundle:install'
 
     to :launch do

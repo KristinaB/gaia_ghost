@@ -53,7 +53,7 @@ h2,
 h3,
 h4,
 h5,
-h6 { 
+h6 {
 	color: #363636;
 	font-weight: 500;
 }
@@ -79,7 +79,7 @@ a,
 	-webkit-transition: all .75s ease-out;
 	-moz-transition: all .75s ease-out;
 	-ms-transition: all .75s ease-out;
-	transition: all .75s ease-out;	
+	transition: all .75s ease-out;
 }
 
 /* Containers */
@@ -710,7 +710,7 @@ ul {
 	}
 }
 
-@media (max-width: 480px) { 
+@media (max-width: 480px) {
 	body {
 		font-size: 14px;
 	}
@@ -721,7 +721,7 @@ ul {
 	.post__wrapper[data-cols="3"],
 	.post__wrapper[data-cols="4"] {
 		width: 100%;
-	}	
+	}
 }
 
 /* mods */
@@ -731,15 +731,15 @@ ul {
 	margin-bottom: 0.5em;
 }
 
-.logo__title { 
+.logo__title {
 	font-size: 2em;
 	margin-bottom: 0.5em;
 }
 
-.logo__title a { 
+.logo__title a {
 	color: #5cc1a9;
 }
-.logo__title a:hover { 
+.logo__title a:hover {
 	color: #3ca189;
 }
 
@@ -748,5 +748,6 @@ ul {
 }
 
 .logo {
-height: 100px;
+	height: 152px;
+	margin-top: 8px;
 }
