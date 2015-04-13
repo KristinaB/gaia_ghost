@@ -33,14 +33,21 @@ end
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+  queue! %[mkdir -p "#{deploy_to}/shared/data"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/data"]
+  queue! %[mkdir -p "#{deploy_to}/shared/images"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/images"]
 end
 
 
 task :symlink => :environment do
-    queue 'rm -rf content/images'
-    queue 'rm -rf content/data'
-    queue  "ln -s #{deploy_to}/shared/data   content/data"
-    queue  "ln -s #{deploy_to}/shared/images content/images"
+  queue 'rm -rf content/images'
+  queue 'rm -rf content/data'
+  queue  "ln -s #{deploy_to}/shared/data   content/data"
+  queue  "ln -s #{deploy_to}/shared/images content/images"
+  queue 'mkdir -p public/content'
+  queue  "ln -s #{deploy_to}/shared/data   public/content/data"
+  queue  "ln -s #{deploy_to}/shared/images public/content/images"
 end
 
 desc "Deploys the current version to the server."
@@ -52,6 +59,9 @@ task :deploy => :environment do
     invoke :'deploy:link_shared_paths'
     invoke :symlink
     # invoke :'bundle:install'
+
+    queue "rm -rf node_modules"
+    queue "/usr/local/bin/npm install --production"
 
     to :launch do
       queue 'mkdir -p tmp'
